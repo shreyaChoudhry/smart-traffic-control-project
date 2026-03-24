@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Smart Traffic Control</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+<div class="logo">
+🚦 Smart Traffic Control
+</div>
+
+<div class="system-status">
+<span class="dot"></span> System Online
+</div>
+
+<div id="time"></div>
+
+</header>
+
+
+<div class="dashboard">
+
+
+<!-- Upload Card -->
+
+<div class="card upload">
+
+<h2>Upload Traffic Video</h2>
+
+<form action="/upload" method="post" enctype="multipart/form-data" class="upload-form">
+
+<input type="file" id="videoUpload" name="video" hidden>
+
+<label for="videoUpload" class="file-label">
+Choose Traffic Video
+</label>
+
+<button class="upload-btn">Upload</button>
+
+</form>
+
+<div class="system-info">
+
+<p>📡 Camera Status : Active</p>
+<p>🧠 AI Model : YOLOv8</p>
+<p>⚡ Processing : Real-time</p>
+<p>🚦 Control Mode : Adaptive</p>
+
+</div>
+
+</div>
+
+
+<!-- AI Info Panel -->
+
+<div class="card info">
+
+<h2>Traffic AI System</h2>
+
+<p>🚗 Vehicle Detection : YOLOv8</p>
+<p>🛣 Lane Detection : Computer Vision</p>
+<p>🚦 Signal Control : Density Based</p>
+<p>📊 Analytics : Real-time Dashboard</p>
+<p>🧠 Mode : Smart City AI</p>
+
+</div>
+
+
+<!-- Live Video -->
+
+<div class="card video">
+
+<h2>Live Traffic Feed</h2>
+
+<img src="{{ url_for('video_feed') }}">
+
+</div>
+
+
+<!-- Traffic Statistics -->
+
+<div class="card stats">
+
+<h2>Traffic Statistics</h2>
+
+<div class="stat-grid">
+
+<div class="stat">
+<h3>Vehicles</h3>
+<p id="vehicles">0</p>
+</div>
+
+<div class="stat">
+<h3>Density</h3>
+<p id="density">LOW</p>
+</div>
+
+<div class="stat">
+<h3>Priority Lane</h3>
+<p id="priority">1</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Lane Status -->
+
+<div class="card lanes">
+
+<h2>Lane Status</h2>
+
+<p>Lane 1 : <span id="lane1">0</span></p>
+<p>Lane 2 : <span id="lane2">0</span></p>
+<p>Lane 3 : <span id="lane3">0</span></p>
+<p>Lane 4 : <span id="lane4">0</span></p>
+
+</div>
+
+
+<!-- Traffic Signals -->
+
+<div class="card signals">
+
+<h2>Traffic Signals</h2>
+
+<div class="lights">
+
+<div class="light red"></div>
+<div class="light red"></div>
+<div class="light red"></div>
+<div class="light red"></div>
+
+</div>
+
+<p class="timer">
+Signal Timer : <span id="timer">20</span> s
+</p>
+
+</div>
+
+
+<!-- Chart -->
+
+<div class="card chart">
+
+<h2>Traffic Analytics</h2>
+
+<canvas id="trafficChart"></canvas>
+
+</div>
+
+
+</div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
